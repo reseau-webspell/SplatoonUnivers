@@ -1,28 +1,28 @@
 const pm2 = require('pm2');
 
 // Start process
-console.log('>> Starting LOC-erisBot');
-pm2.connect((err) => {
+console.log('>> Starting Slatoon-Univers');
+pm2.connect( (err) => {
     if (err) {
         console.error(err);
         process.exit(2);
     }
-    pm2.start({
+    pm2.start( {
         script: 'index.js',
         args: ['--color'],
-        name: 'LOC-eris',
-        exec_mode : 'fork',
-        max_memory_restart : '1G',
+        name: 'Splatoon',
+        exec_mode: 'fork',
+        max_memory_restart: '1G',
         cwd: 'src',
         error: '../logs/error.err',
-        output: '../../logs/output.log',
-        pid: '../../logs/pid.pid',
+        output: '../logs/output.log',
+        pid: '../logs/pid.pid',
         node_args: '-r esm',
         autorestart: true,
         wait_ready: true,
-    }, (err) => {
+    }, (e) => {
         pm2.disconnect();
-        if (err) throw err;
-    });
-});
+        if (e) throw e;
+    } );
+} );
 //

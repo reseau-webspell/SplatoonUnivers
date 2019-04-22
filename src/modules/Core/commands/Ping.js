@@ -1,18 +1,17 @@
-'use strict';
-
-const { Command } = require('axoncore');
-
-const Pong = require('./Ping_Pong');
+import { Command } from 'axoncore';
 
 class Ping extends Command {
     constructor(module) {
         super(module);
 
         this.label = 'ping';
-        this.aliases = ['ping', 'pang', 'pung'];
+        this.aliases = [
+            'ping',
+            'pang',
+            'pung',
+        ];
 
-        this.hasSubcmd = true;
-        this.subcmds = [Pong];
+        this.hasSubcmd = false;
 
         this.infos = {
             owner: ['KhaaZ'],
@@ -27,13 +26,13 @@ class Ping extends Command {
         this.options.guildOnly = false;
     }
 
-    async execute({ msg }) {
+    async execute( { msg } ) {
         const start = Date.now();
 
         const mess = await this.sendMessage(msg.channel, 'Pong! ');
 
         if (!mess) {
-            return;
+            return null;
         }
 
         const diff = (Date.now() - start);
@@ -42,4 +41,4 @@ class Ping extends Command {
     }
 }
 
-module.exports = Ping;
+export default Ping;

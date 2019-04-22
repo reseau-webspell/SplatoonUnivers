@@ -1,6 +1,6 @@
 {
     "bot": {
-	"token": ""
+	   "token": ""
     },
     "webhooks": {
         "status": {

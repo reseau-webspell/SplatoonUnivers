@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "SplatoonUnivers - Community bot for the Splatoon Univers server",
   "main": "index.js",
-  "repository": "https://gitlab.com/library-of-code/events/eris-bot.git",
+  "repository": "https://github.com/Khaazz/SplatoonUnivers",
   "author": "khaazz <khaaz.dev@gmail.com>",
   "license": "MIT",
   "scripts": {
@@ -14,11 +14,13 @@
     "axoncore": "^1.0.0",
     "chalk": "^2.4.2",
     "eris": "https://github.com/Khaazz/eris.git#axoncore",
+    "esm": "^3.2.22",
     "eventemitter3": "^3.1.0",
     "pm2": "^3.2.9",
     "superagent": "^4.1.0"
   },
   "devDependencies": {
+    "@axonteam/eslint-config-axonteam": "axonteam/eslint-config-axonteam",
     "eslint": "^5.14.0"
   }
 }

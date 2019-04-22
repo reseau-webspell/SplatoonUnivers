@@ -1,8 +1,6 @@
-'use strict';
+import { inspect } from 'util';
 
-const { inspect } = require('util');
-
-const { Command } = require('axoncore');
+import { Command } from 'axoncore';
 
 class Eval extends Command {
     constructor(module) {
@@ -12,7 +10,11 @@ class Eval extends Command {
         this.aliases = ['eval', 'e'];
 
         this.infos = {
-            owner: ['AS04', 'Ape', 'KhaaZ'],
+            owner: [
+                'AS04',
+                'Ape',
+                'KhaaZ',
+            ],
             name: 'eval',
             description: 'Eval js code.',
             usage: 'eval [js code]',
@@ -25,8 +27,10 @@ class Eval extends Command {
         this.permissions.staff.needed = this.axon.staff.owners;
         this.permissions.staff.bypass = this.axon.staff.owners;
     }
-
-    async execute({ msg, args, /* eslint-disable */guildConf/* eslint-enable */ }) {
+  
+    async execute( {
+        msg, args, guildConf, // eslint-disable-line
+    } ) {
         /* eslint-disable */
             const Util = this.Util;
             const Resolver = this.Resolver;
@@ -38,14 +42,14 @@ class Eval extends Command {
 
         let evaled;
         try {
-            evaled = await eval(args.join(' '));
+            evaled = await eval(args.join(' ') ); // eslint-disable-line no-eval
         } catch (err) {
             this.Logger.debug(err.stack);
             return this.sendMessage(msg.channel, err.message ? err.message : err.name);
         }
 
         if (typeof evaled === 'object') {
-            evaled = inspect(evaled, { depth: 0, showHidden: true });
+            evaled = inspect(evaled, { depth: 0, showHidden: true } );
         } else {
             evaled = String(evaled);
         }
@@ -55,27 +59,25 @@ class Eval extends Command {
 
         const fullLen = evaled.length;
 
-        if (fullLen === 0) {
-            return;
+        if (fullLen === 0) { // eslint-disable-line no-magic-numbers
+            return null;
         }
 
-        if (fullLen > 2000) {
+        if (fullLen > 2000) { // eslint-disable-line no-magic-numbers
             evaled = evaled.match(/[\s\S]{1,1900}[\n\r]/g) || [];
-            if (evaled.length > 3) {
+            if (evaled.length > 3) { // eslint-disable-line no-magic-numbers
                 this.sendMessage(msg.channel, `Cut the response! [${evaled.length} | ${fullLen}]`);
                 this.sendMessage(msg.channel, `\`\`\`js\n${evaled[0]}\`\`\``);
                 this.sendMessage(msg.channel, `\`\`\`js\n${evaled[1]}\`\`\``);
-                this.sendMessage(msg.channel, `\`\`\`js\n${evaled[2]}\`\`\``);
-                return;
-            } else {
-                return evaled.forEach((message) => {
-                    this.sendMessage(msg.channel, `\`\`\`js\n${message}\`\`\``);
-                    return;
-                });
+                return this.sendMessage(msg.channel, `\`\`\`js\n${evaled[2]}\`\`\``);
             }
+            return evaled.forEach( (message) => {
+                this.sendMessage(msg.channel, `\`\`\`js\n${message}\`\`\``);
+                return;
+            } );
         }
         return this.sendMessage(msg.channel, `\`\`\`js\n${evaled}\`\`\``);
     }
 }
 
-module.exports = Eval;
+export default Eval;

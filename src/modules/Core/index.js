@@ -1,9 +1,7 @@
-'use strict';
+import { Module } from 'axoncore';
 
-const { Module } = require('axoncore');
-
-const commands = require('./commands/index');
-const events = require('./events/index');
+import * as commands from './commands/index';
+// import events from './events/index';
 
 class Core extends Module {
     constructor(...args) {
@@ -19,8 +17,8 @@ class Core extends Module {
             description: 'The main module with most basic commands.',
         };
 
-        this.init(commands, events);
+        this.init(commands);
     }
 }
 
-module.exports = Core;
+export default Core;

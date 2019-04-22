@@ -1,25 +1,23 @@
-'use strict';
+import Bot from './Bot';
+import conf from './configs/customConf.json';
 
-const Bot = require('./Bot');
-const customConf = require('./configs/customConf.json');
-
-if (customConf.db === 1) {
+if (conf.db === 1) { // eslint-disable-line no-magic-numbers
     try {
         const mongoose = require('mongoose');
-        mongoose.connect('mongodb://localhost/loc-erisDB', {
+        mongoose.connect('mongodb://localhost/splatoon-universDB', {
             useNewUrlParser: true,
             useFindAndModify: false,
             useCreateIndex: true,
             autoReconnect: true,
-        })
-            .then(() => {
-                Bot.Logger.notice('Connected to loc-erisDB DataBase.');
-            })
+        } )
+            .then( () => {
+                Bot.Logger.notice('Connected to splatoon-universDB DataBase.');
+            } )
             .catch(err => {
-                Bot.Logger.emerg('Could NOT connect to loc-erisDB DataBase.\n' + err.stack);
-            });
+                Bot.Logger.emerg(`Could NOT connect to splatoon-universDB DataBase.\n${err.stack}`);
+            } );
     } catch (e) {
-        Bot.Logger.emerg('Could NOT connect to loc-erisDB DataBase.\n' + e.stack);
+        Bot.Logger.emerg(`Could NOT connect to splatoon-universDB DataBase.\n${e.stack}`);
     }
 }
 

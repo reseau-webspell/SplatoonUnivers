@@ -1,8 +1,8 @@
-'use strict';
 
-const { AxonClient, Resolver } = require('axoncore');
 
-const modules = require('./modules/index');
+import { AxonClient, Resolver } from 'axoncore';
+
+import * as modules from './modules/index';
 
 /**
  * Custom client constructor
@@ -12,11 +12,13 @@ const modules = require('./modules/index');
  * @class Client
  * @extends {AxonCore.AxonClient}
  */
-class Client extends AxonClient {
+class SUClient extends AxonClient {
     constructor(client, axonOptions) {
         super(client, axonOptions, modules);
+    }
 
-        this.Resolver = Resolver;
+    get Resolver() {
+        return Resolver;
     }
 
     initStaff() {
@@ -36,7 +38,7 @@ class Client extends AxonClient {
         this.client.editStatus(null, {
             name: `AxonCore | ${this.params.prefix[0]}help`,
             type: 0,
-        });
+        } );
     }
 
     $sendFullHelp(msg) {
@@ -50,4 +52,4 @@ class Client extends AxonClient {
     }
 }
 
-module.exports = Client;
+export default SUClient;

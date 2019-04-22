@@ -1,4 +1,17 @@
 {
+    "mainGuild": "539351645340041216",
+
+    "Announcement": {
+        "acceuil": {
+            "id": "569826933857320961",
+            "message": "<:FOND:540187797299134464>\n{user} **Bienvenue sur le serveur de Splatoon Univers [FR] !**\n\n`Lis le salon` <#456493908554416128> `et valide le pour avoir accès aux salons du serveur !`\n\nAmuses toi bien parmi nous et n'hésites pas poser des questions aux **<@&558259060508721153>** !\n<:FOND:540187797299134464>"
+        },
+        "general": {
+            "id": "569826933857320961",
+            "message": "<:FOND:540187797299134464>\n{user} **Bienvenue sur le serveur Splatoon Univers [FR] !**\n\n`Tu es le {membercount}ème membre sur ce serveur, nous te souhaitons une bonne visite des lieux !`\n\nPour que ce serveur discord permette à chacun d’être bien dans ses baskets, nous t'invitons à lire attentivement le salon <#456493908554416128> !\n\nAmuses toi bien parmi nous et n'hésites pas poser des questions aux **<@&558259060508721153>** !\n<:FOND:540187797299134464>"
+        }
+    },
+
     "general": {
         "name": "LOC-erisBot",
         "description": "Community Bot made with Eris and AxonCore",

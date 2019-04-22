@@ -1,8 +1,6 @@
-'use strict';
+import { Utils } from 'axoncore';
 
-const { Utils } = require('axoncore');
-
-class LoCUtils extends Utils {
+class SUUtils extends Utils {
     constructor(...args) {
         super(...args);
         this.invite = /^(discord.gg\/|discordapp.com\/invite\/)([a-z0-9]+)$/gi;
@@ -24,11 +22,11 @@ class LoCUtils extends Utils {
      * Convert a rgb code into a hex code
      *
      * @param {Number/String} float -  the rgb color code
-     * @returns {String} Hex color code (6 char) (without #)
+     * @returns {String} Hex color code (6 char) (without #)f
      */
     rgbTOhex(red, green, blue) {
         return ((blue | green << 8 | red << 16) | 1 << 24).toString(16).slice(1); // eslint-disable-line
     }
 }
 
-module.exports = LoCUtils;
+export default SUUtils;

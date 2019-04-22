@@ -1,8 +1,6 @@
-'use strict';
+import { Module } from 'axoncore';
 
-const { Module } = require('axoncore');
-
-const commands = require('./commands/index');
+import * as commands from './commands/index';
 // const index = require('./index/index');;
 
 class Private extends Module {
@@ -23,4 +21,4 @@ class Private extends Module {
     }
 }
 
-module.exports = Private;
+export default Private;

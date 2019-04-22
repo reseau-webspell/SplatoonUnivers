@@ -1,24 +1,21 @@
-'use strict';
+import SUClient from './SUClient';
+import { Client } from 'eris';
 
-const Client = require('./Client');
-const Eris = require('eris');
+import axonConf from './configs/customConf.json';
+import tokenConf from './configs/tokenConf.json';
+import templateConf from './configs/templateConf.json';
 
-const axonConf = require('./configs/customConf.json');
-const tokenConf = require('./configs/tokenConf.json');
-const templateConf = require('./configs/templateConf.json');
-
-const LoCUtils = require('./LoCUtils');
+import SUUtils from './SUUtils';
 
 const AxonOptions = {
     axonConf,
     templateConf,
     tokenConf,
 
-    resolver: null,
-    utils: LoCUtils,
+    utils: SUUtils,
 };
 
-const client = new Eris.Client(
+const client = new Client(
     tokenConf.bot.token,
     {
         autoreconnect: true,
@@ -30,9 +27,9 @@ const client = new Eris.Client(
         restMode: true,
     }
 );
-const Bot = new Client(
+const Bot = new SUClient(
     client,
     AxonOptions
 );
 
-module.exports = Bot;
+export default Bot;

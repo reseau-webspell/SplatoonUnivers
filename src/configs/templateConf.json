@@ -17,11 +17,11 @@
 
     "message": {
         "error": {
-            "permBot": "I don't have sufficient permissions to do that! I need:",
-            "permSource": "You don't have sufficient permissions to do that! You need:",
-            "permTarget": "This user is a mod/admin, I can't do that!",
-            "cooldown": "Please, slow down! Remaining time:",
-            "general": "An unexpected error occured! Contact the bot developers."
+            "permBot": "Je n'ai pas les permissions nécessaire pour cette action!",
+            "permSource": "Vous n'avez pas les permissions neécessaires pour cette action!",
+            "permTarget": "Cet utilisateur est un mod/admin, je ne peux pas faire ca!",
+            "cooldown": "Eh! Moins vite!",
+            "general": "An unexpected error occured! Contact Bot developers."
         }
     }
 }
