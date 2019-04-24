@@ -19,7 +19,7 @@ class Mute extends Command {
 
         this.options.argsMin = 1;
         this.options.cooldown = 3000;
-        this.options.guildOnly = false;
+        this.options.guildOnly = true;
 
         this._muteRole = this.axon.configs.axon.muteRole;
 
@@ -48,9 +48,7 @@ class Mute extends Command {
             return this.sendError(msg.channel, `Je ne peux pas mute ${member.username}#${member.discriminator}.`);
         }
 
-        this.module.log('Mute', member, msg.member, reason);
-
-        return this.sendSuccess(msg.channel, `${member.username}#${member.discriminator} a ete mute.`);
+        return this.module.log(msg.channel, 'Mute', member, msg.member, reason);
     }
 }
 

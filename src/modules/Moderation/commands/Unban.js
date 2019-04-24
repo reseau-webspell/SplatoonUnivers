@@ -18,7 +18,7 @@ class Unban extends Command {
 
         this.options.argsMin = 1;
         this.options.cooldown = 3000;
-        this.options.guildOnly = false;
+        this.options.guildOnly = true;
 
         this.permissions.bot = ['sendMessages', 'banMembers'];
         this.permissions.user.bypass = ['manageGuild', 'administrator'];
@@ -47,9 +47,7 @@ class Unban extends Command {
             return this.sendError(msg.channel, `Je ne peux pas unban ${member.username}#${member.discriminator}.`);
         }
 
-        this.module.log('Unban', member, msg.member, reason);
-
-        return this.sendSuccess(msg.channel, `${member.username}#${member.discriminator} a ete unban du serveur.`);
+        return this.module.log(msg.channel, 'Unban', member, msg.member, reason);
     }
 }
 

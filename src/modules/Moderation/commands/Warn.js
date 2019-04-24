@@ -19,7 +19,7 @@ class Warn extends Command {
 
         this.options.argsMin = 1;
         this.options.cooldown = 3000;
-        this.options.guildOnly = false;
+        this.options.guildOnly = true;
 
         this.permissions.user.bypass = ['manageGuild', 'administrator'];
         this.permissions.rolesID.needed = [this.axon.configs.axon.moderationRole];
@@ -34,15 +34,7 @@ class Warn extends Command {
 
         const reason = args.length > 0 ? args.join(' ') : 'Pas de raison';
 
-        this.module.log('Warn', member, msg.member, reason);
-
-        try {
-            this.AxonUtils.sendDM(member, `Vous avez ete warn pour: ${reason}`);
-        } catch (err) {
-            return this.sendError(msg.channel, 'Cet utilisateur a les DMs desactivés. Warn log malgré tout.');
-        }
-
-        return this.sendSuccess(msg.channel, `${member.username}#${member.discriminator} a ete warn.`);
+        return this.module.log(msg.channel, 'Warn', member, msg.member, reason);
     }
 }
 

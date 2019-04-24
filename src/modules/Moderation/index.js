@@ -52,24 +52,32 @@ class Moderation extends Module {
         return true;
     }
 
-    log(type, target, responsible, reason) {
+    log(channel, type, target, responsible, reason) {
         const emote = TYPE[type];
         
         const embed = {
             color: 0x36393f,
-            author: {
-                name: `<:Infraction:568400769783431174> **INFRACTION ${emote} ${type}**`,
-            },
+            title: `<:Infraction:568400769783431174> **INFRACTION ${emote} ${type}**`,
             description: `**Utilisateur:** ${target.username}#${target.discriminator}\n**Raison:** ${reason}\n**Moderateur:** ${responsible.username}#${responsible.discriminator}`,
             timestamp: new Date(),
             footer: {
                 text: `ID: ${target.id}`,
             },
         };
-        
-        for (const channel of this._modlogChannels) {
-            this.bot.createMessage(channel, { embed } );
+
+        if (type !== 'Unmute' || type !== 'Unban') {
+            try {
+                this.AxonUtils.sendDM(target, { embed } );
+            } catch (err) {
+                this.sendError(channel, 'Cet utilisateur a les DMs desactivés. Warn log malgré tout.');
+            }
         }
+
+        for (const chan of this._modlogChannels) {
+            this.bot.createMessage(chan, { embed } );
+        }
+
+        return this.sendMessage(channel, { embed } );
     }
 }
 

@@ -19,7 +19,7 @@ class Kick extends Command {
 
         this.options.argsMin = 1;
         this.options.cooldown = 3000;
-        this.options.guildOnly = false;
+        this.options.guildOnly = true;
 
         this.permissions.bot = ['sendMessages', 'kickMembers'];
         this.permissions.user.bypass = ['manageGuild', 'administrator'];
@@ -42,9 +42,7 @@ class Kick extends Command {
             return this.sendError(msg.channel, `Je ne peux pas kick ${member.username}#${member.discriminator}.`);
         }
 
-        this.module.log('Kick', member, msg.member, reason);
-
-        return this.sendSuccess(msg.channel, `${member.username}#${member.discriminator} a ete kick du serveur.`);
+        return this.module.log(msg.channel, 'Kick', member, msg.member, reason);
     }
 }
 
