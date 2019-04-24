@@ -37,11 +37,6 @@ class Moderation extends Module {
             return false;
         }
 
-        if (!this.Utils.isHigherRole(msg.channel.guild, msg.member, member) ) {
-            this.sendError(msg.channel, 'Votre role n\'est pas assez haut pour effectuer cette action');
-            return false;
-        }
-
         if (!this.Utils.isHigherRole(msg.channel.guild, msg.channel.guild.members.get(this.bot.user.id), member) ) {
             this.sendError(msg.channel, 'Je n\'ai pas un role suffisamment haut pour effectuer cette action');
             return false;
