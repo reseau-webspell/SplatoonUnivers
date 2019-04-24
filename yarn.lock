@@ -301,14 +301,6 @@ axios@^0.16.2:
     follow-redirects "^1.2.3"
     is-buffer "^1.1.5"
 
-axoncore@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/axoncore/-/axoncore-1.0.0.tgz#817e77588c44e96a31993233c6c3df0e5737152f"
-  integrity sha512-YHdbt5jCGafwivQkh584qRacvPJ2fOP1B8v138KwYluwVs+yrVbiWrFXkjifPKB0zoKy20mHIHImJsQE1c4OvQ==
-  dependencies:
-    esm "^3.0.84"
-    eventemitter3 "^3.1.0"
-
 "axoncore@http://github.com/Khaazz/AxonCore.git#dev":
   version "1.0.0"
   resolved "http://github.com/Khaazz/AxonCore.git#78605b70ec3e0ec6295a4078529c9b753eb09c6d"

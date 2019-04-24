@@ -52,7 +52,7 @@ class Moderation extends Module {
         return true;
     }
 
-    log(channel, type, target, responsible, reason) {
+    async log(channel, type, target, responsible, reason) {
         const emote = TYPE[type];
         
         const embed = {
@@ -67,9 +67,9 @@ class Moderation extends Module {
 
         if (type !== 'Unmute' || type !== 'Unban') {
             try {
-                this.AxonUtils.sendDM(target, { embed } );
+                await this.AxonUtils.sendDM(target, { embed } );
             } catch (err) {
-                this.sendError(channel, 'Cet utilisateur a les DMs desactivés. Warn log malgré tout.');
+                this.sendError(channel, 'Je ne peux pas DM cet utilisateur.');
             }
         }
 
