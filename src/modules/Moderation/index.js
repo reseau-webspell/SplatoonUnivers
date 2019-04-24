@@ -58,7 +58,7 @@ class Moderation extends Module {
         const embed = {
             color: 0x36393f,
             title: `<:Infraction:568400769783431174> **INFRACTION ${emote} ${type}**`,
-            description: `**Utilisateur:** ${target.username}#${target.discriminator}\n**Raison:** ${reason}\n**Moderateur:** ${responsible.username}#${responsible.discriminator}`,
+            description: `\u200b\n**Utilisateur:** ${target.username}#${target.discriminator}\n**Raison:** ${reason}\n**Moderateur:** ${responsible.username}#${responsible.discriminator}\n\u200b`,
             timestamp: new Date(),
             footer: {
                 text: `ID: ${target.id}`,
