@@ -27,11 +27,8 @@ class Unban extends Command {
     }
 
     async execute( { msg, args } ) {
-        const member = this.Resolver.member(msg.channel.guild, args.shift() );
-        if (!this.module.canExecute(msg, member) ) {
-            return null;
-        }
-
+        const member = args[0];
+        
         const reason = args.length > 0 ? args.join(' ') : 'Pas de raison';
         const fullReason = `${reason} - Unbanned by ${msg.author.username}#${msg.author.discriminator}`;
 
