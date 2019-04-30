@@ -27,7 +27,10 @@ class Unban extends Command {
     }
 
     async execute( { msg, args } ) {
-        const member = args[0];
+        const resolved = this.Resolver.user(this.bot, args[0]);
+        const member = resolved ? resolved.id : args[0];
+        
+        args.shift()
         
         const reason = args.length > 0 ? args.join(' ') : 'Pas de raison';
         const fullReason = `${reason} - Unbanned by ${msg.author.username}#${msg.author.discriminator}`;
