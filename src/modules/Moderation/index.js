@@ -65,7 +65,7 @@ class Moderation extends Module {
             },
         };
 
-        if (type !== 'Unmute' || type !== 'Unban') {
+        if (type !== 'Unmute' && type !== 'Unban') {
             try {
                 await this.AxonUtils.sendDM(target, { embed } );
             } catch (err) {
