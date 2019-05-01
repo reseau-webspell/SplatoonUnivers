@@ -37,14 +37,14 @@ class Unban extends Command {
 
         const bannedUsers = await msg.channel.guild.getBans();
 
-        if (!bannedUsers.find(i => i.user.id === member.id) ) {
+        if (!bannedUsers.find(i => i.user.id === member) ) {
             return this.sendError(msg.channel, `Cet utilisateur n'est pas banni.`);
         }
 
         try {
-            await this.bot.unbanGuildMember(msg.channel.guild.id, member.id, fullReason);
+            await this.bot.unbanGuildMember(msg.channel.guild.id, member, fullReason);
         } catch (err) {
-            return this.sendError(msg.channel, `Je ne peux pas unban ${member.username}#${member.discriminator}.`);
+            return this.sendError(msg.channel, `Je ne peux pas unban ${resolved ? `${resolved.username}#${resolved.discriminator}` : member}.`);
         }
 
         return this.module.log(msg.channel, 'Unban', member, msg.member, reason);
