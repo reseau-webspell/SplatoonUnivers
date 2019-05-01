@@ -47,7 +47,7 @@ class Unban extends Command {
             return this.sendError(msg.channel, `Je ne peux pas unban ${resolved ? `${resolved.username}#${resolved.discriminator}` : member}.`);
         }
 
-        return this.module.log(msg.channel, 'Unban', member, msg.member, reason);
+        return this.module.log(msg.channel, 'Unban', resolved || member, msg.member, reason);
     }
 }
 
