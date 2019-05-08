@@ -48,7 +48,7 @@ class Moderation extends Module {
         if (this.Utils.hasPerms(member, ['manageGuild', 'administrator'] )
             || member.roles.includes(this.axon.configs.axon.moderationRole)
             || member.roles.includes(this.axon.configs.axon.administrationrole) ) {
-            this.sendError(msg.channel, ' | `IMPOSSIBLE, CET UTILISATEUR EST MEMBRE DU STAFF.');
+            this.sendError(msg.channel, ' | `IMPOSSIBLE, CET UTILISATEUR EST MEMBRE DU STAFF.`');
             return false;
         }
 
