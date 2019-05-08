@@ -33,7 +33,7 @@ class Moderation extends Module {
 
     canExecute(msg, member) {
         if (!member) {
-            this.sendError(msg.channel, 'Cet utilisateur n\'a pas été trouvé.');
+            this.sendMessage(msg.channel, '<:FOND:540187797299134464>\n<a:no:568403433565192202> | `CET UTILISATEUR N\'A PAS ETE TROUVE.`\n<:FOND:540187797299134464>');
             return false;
         }
 
@@ -48,7 +48,7 @@ class Moderation extends Module {
         if (this.Utils.hasPerms(member, ['manageGuild', 'administrator'] )
             || member.roles.includes(this.axon.configs.axon.moderationRole)
             || member.roles.includes(this.axon.configs.axon.administrationrole) ) {
-            this.sendError(msg.channel, ' | `IMPOSSIBLE, CET UTILISATEUR EST MEMBRE DU STAFF.`');
+            this.sendMessage(msg.channel, '<:FOND:540187797299134464>\n<a:no:568403433565192202> | `IMPOSSIBLE, CET UTILISATEUR EST MEMBRE DU STAFF.`\n<:FOND:540187797299134464>');
             return false;
         }
 
@@ -72,7 +72,7 @@ class Moderation extends Module {
             try {
                 await this.AxonUtils.sendDM(target, { embed } );
             } catch (err) {
-                this.sendError(channel, ' | `JE NE PEUT PAS ENVOYER DE MESSAGES PRIVÉS A CET UTILISATEUR.`');
+                this.sendMessage(channel, '<:FOND:540187797299134464>\n<a:no:568403433565192202>  | `JE NE PEUX PAS ENVOYER DE MESSAGES PRIVÉS A CET UTILISATEUR.`\n<:FOND:540187797299134464>');
             }
         }
 
