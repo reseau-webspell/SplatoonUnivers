@@ -37,9 +37,12 @@ class Moderation extends Module {
             return false;
         }
 
-        if (!this.Utils.isHigherRole(msg.channel.guild, msg.channel.guild.members.get(this.bot.user.id), member) ) {
-            this.sendError(msg.channel, 'Je n\'ai pas un role suffisamment haut pour effectuer cette action');
-            return false;
+        const botMember = msg.channel.guild.members.get(this.bot.user.id);
+        if (botMember.roles.length === 0 || member.roles.length === 0) {
+            if ( !this.Utils.isHigherRole(msg.channel.guild, botMember, member) ) {
+                this.sendError(msg.channel, 'Je n\'ai pas un role suffisamment haut pour effectuer cette action');
+                return false;
+            }
         }
 
         if (this.Utils.hasPerms(member, ['manageGuild', 'administrator'] )
