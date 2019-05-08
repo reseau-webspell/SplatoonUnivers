@@ -48,7 +48,7 @@ class Moderation extends Module {
         if (this.Utils.hasPerms(member, ['manageGuild', 'administrator'] )
             || member.roles.includes(this.axon.configs.axon.moderationRole)
             || member.roles.includes(this.axon.configs.axon.administrationrole) ) {
-            this.sendError(msg.channel, 'Cet utilisateur est un mod/admin, je ne peux pas faire ca.');
+            this.sendError(msg.channel, ' | `IMPOSSIBLE, CET UTILISATEUR EST MEMBRE DU STAFF.');
             return false;
         }
 
@@ -72,7 +72,7 @@ class Moderation extends Module {
             try {
                 await this.AxonUtils.sendDM(target, { embed } );
             } catch (err) {
-                this.sendError(channel, 'Je ne peux pas DM cet utilisateur.');
+                this.sendError(channel, ' | `JE NE PEUT PAS ENVOYER DE MESSAGES PRIVÉS A CET UTILISATEUR.`');
             }
         }
 
